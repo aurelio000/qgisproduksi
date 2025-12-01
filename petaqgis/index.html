@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG Tembakau Temanggung - Peta 2023 & 2024</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f0ff;
+            --secondary: #ff00d4;
+            --accent: #9d4edd;
+            --dark-1: #0a0a12;
+            --dark-2: #12121f;
+            --dark-3: #1a1a2e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow-cyan: rgba(0, 240, 255, 0.4);
+            --glow-magenta: rgba(255, 0, 212, 0.4);
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --info: #2196F3;
+            --increase: #00E676;
+            --decrease: #FF5252;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark-1);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--glow-magenta) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.3) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.05); }
+            50% { transform: translate(-30px, 50px) scale(0.95); }
+            75% { transform: translate(-50px, -20px) scale(1.02); }
+        }
+
+        /* Grid Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px var(--glow-cyan));
+        }
+
+        .brand-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, #ffffff 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Flip Container untuk Peta */
+        .flip-container {
+            perspective: 1500px;
+            height: 600px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flipper.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        /* Map Container */
+        .map-container {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            background: rgba(10, 10, 18, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .map-overlay h3 {
+            font-size: 16px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .map-overlay p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .map-overlay .year-badge {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(157, 78, 221, 0.2));
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        /* Map Controls */
+        .map-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .map-btn {
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-btn:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .map-btn.active {
+            background: rgba(0, 240, 255, 0.15);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        .map-btn.flip-btn {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(157, 78, 221, 0.2));
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Production Summary */
+        .production-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 240, 255, 0.05);
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .summary-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .summary-value {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .summary-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Data Table */
+        .data-table-container {
+            overflow-x: auto;
+            max-height: 450px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--primary);
+            font-weight: 500;
+            text-align: left;
+            padding: 18px 15px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .data-table .increase {
+            color: var(--increase);
+            font-weight: 500;
+        }
+
+        .data-table .decrease {
+            color: var(--decrease);
+            font-weight: 500;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        /* Kecamatan Highlights */
+        .highlights {
+            margin-top: 25px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .highlight-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .highlight-item.high {
+            border-left-color: var(--increase);
+        }
+
+        .highlight-item.medium {
+            border-left-color: var(--warning);
+        }
+
+        .highlight-item.low {
+            border-left-color: var(--decrease);
+        }
+
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .highlight-item.high .highlight-icon {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--increase);
+        }
+
+        .highlight-item.medium .highlight-icon {
+            background: rgba(255, 152, 0, 0.1);
+            color: var(--warning);
+        }
+
+        .highlight-item.low .highlight-icon {
+            background: rgba(255, 82, 82, 0.1);
+            color: var(--decrease);
+        }
+
+        .highlight-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .highlight-info p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 30px 0;
+            text-align: center;
+            opacity: 0;
+            animation: fadeUp 0.5s ease-out 1s forwards;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .brand-name {
+                font-size: 32px;
+                letter-spacing: 3px;
+            }
+            
+            .main-content {
+                gap: 20px;
+            }
+            
+            .flip-container {
+                height: 500px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .map-controls {
+                justify-content: center;
+            }
+            
+            .production-summary {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 26px;
+            }
+            
+            .card-title {
+                font-size: 18px;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+            
+            .flip-container {
+                height: 400px;
+            }
+            
+            .map-overlay {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .map-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 22px;
+            }
+            
+            .tagline {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+            
+            .flip-container {
+                height: 350px;
+            }
+            
+            .summary-value {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f0ff"/>
+                            <stop offset="100%" style="stop-color:#ff00d4"/>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="50,5 95,30 95,70 50,95 5,70 5,30" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="20" fill="url(#logoGradient)" opacity="0.1"/>
+                    <path d="M30,40 L50,20 L70,40 L70,60 L50,80 L30,60 Z" fill="none" stroke="url(#logoGradient)" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <h1 class="brand-name">Produksi Tembakau Temanggung</h1>
+            <p class="tagline">Perbandingan Peta Produksi 2023 dan 2024</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column: Maps -->
+            <div class="card">
+                <h2 class="card-title">
+                    <i class="fas fa-map"></i> Peta Persebaran Tembakau
+                </h2>
+                
+                <!-- Flip Container untuk Peta -->
+                <div class="flip-container">
+                    <div class="flipper" id="mapFlipper">
+                        <!-- Peta 2023 (Front) -->
+                        <div class="front">
+                            <div class="map-container">
+                                <div class="map-overlay">
+                                    <div>
+                                        <h3>Produksi Tembakau Tahun 2023</h3>
+                                        <p>Peta persebaran tanaman tembakau berdasarkan data BPS 2023</p>
+                                    </div>
+                                    <div class="year-badge">TAHUN 2023</div>
+                                </div>
+                                <!-- Iframe untuk peta 2023 -->
+                                <iframe 
+                                    class="map-frame"
+                                    src="2023/index.html" 
+                                    allowfullscreen="" 
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                        
+                        <!-- Peta 2024 (Back) -->
+                        <div class="back">
+                            <div class="map-container">
+                                <div class="map-overlay">
+                                    <div>
+                                        <h3>Produksi Tembakau Tahun 2024</h3>
+                                        <p>Peta persebaran tanaman tembakau berdasarkan data BPS 2024</p>
+                                    </div>
+                                    <div class="year-badge">TAHUN 2024</div>
+                                </div>
+                                <!-- Iframe untuk peta 2024 -->
+                                <iframe 
+                                    class="map-frame"
+                                    src="2024/index.html" 
+                                    allowfullscreen="" 
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Controls -->
+                <div class="map-controls">
+                    <button class="map-btn active" onclick="showMap('2023')">
+                        <i class="fas fa-calendar-alt"></i> Peta 2023
+                    </button>
+                    <button class="map-btn flip-btn" onclick="flipMap()">
+                        <i class="fas fa-exchange-alt"></i> Flip Peta
+                    </button>
+                    <button class="map-btn" onclick="showMap('2024')">
+                        <i class="fas fa-calendar-alt"></i> Peta 2024
+                    </button>
+                </div>
+                
+                <!-- Production Summary -->
+                <div class="production-summary">
+                    <div class="summary-item">
+                        <div class="summary-value" id="total2023">9.685,73</div>
+                        <div class="summary-label">Total 2023 (ton)</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-value" id="total2024">9.443,18</div>
+                        <div class="summary-label">Total 2024 (ton)</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-value decrease" id="totalChange">-2,5%</div>
+                        <div class="summary-label">Perubahan</div>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+            <!-- Right Column: Data -->
+            <div class="card">
+                <h2 class="card-title">
+                    <i class="fas fa-table"></i> Data Produksi per Kecamatan
+                </h2>
+                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 20px; font-size: 14px;">
+                    Data produksi tembakau Kabupaten Temanggung tahun 2023-2024 dalam satuan ton.
+                </p>
+                
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Kecamatan</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                                <th>Perubahan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTembakau">
+                            <!-- Data akan diisi oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Kecamatan Highlights -->
+                <div class="highlights">
+                    <h3 style="font-size: 16px; color: var(--primary); margin: 25px 0 15px 0; font-family: 'Syne', sans-serif;">
+                        <i class="fas fa-star"></i> Kecamatan Unggulan
+                    </h3>
+                    
+                    <div class="highlight-item high">
+                        <div class="highlight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Kledung - Produsen Tertinggi 2024</h4>
+                            <p>Produksi: 1.310,52 ton (↑31,8% dari 2023)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item high">
+                        <div class="highlight-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Bulu - Peningkatan Signifikan</h4>
+                            <p>Produksi: 1.020,41 ton (↑26,0% dari 2023)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item medium">
+                        <div class="highlight-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Ngadirejo - Penurunan Produksi</h4>
+                            <p>Produksi: 922,00 ton (↓24,9% dari 2023)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analisis -->
+                <div style="margin-top: 25px; padding: 20px; background: rgba(0, 240, 255, 0.05); border-radius: 12px; border-left: 4px solid var(--primary);">
+                    <h3 style="font-size: 16px; color: var(--primary); margin-bottom: 10px; font-family: 'Syne', sans-serif;">
+                        <i class="fas fa-chart-bar"></i> Analisis Perubahan Produksi
+                    </h3>
+                    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Produksi tembakau Kabupaten Temanggung mengalami penurunan 2,5% dari tahun 2023 ke 2024.
+                        Kecamatan Kledung dan Bulu menunjukkan peningkatan signifikan, sementara Ngadirejo, Kedu, dan Jumo mengalami penurunan.
+                        Wilayah utara (Kledung, Parakan, Bulu) tetap menjadi sentra produksi utama.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 SIG Tembakau Temanggung | Data Sumber: BPS Kabupaten Temanggung</p>
+            <p style="margin-top: 5px; font-size: 11px;">Nama: Iwan Aurelio Esyifa | NPM: 23670131 | Sistem Informasi Geografis</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data produksi tembakau dari BPS
+        const dataTembakau = [
+            { kecamatan: "Parakan", produksi2023: 543.30, produksi2024: 557.44 },
+            { kecamatan: "Kledung", produksi2023: 994.51, produksi2024: 1310.52 },
+            { kecamatan: "Bansari", produksi2023: 648.10, produksi2024: 650.57 },
+            { kecamatan: "Bulu", produksi2023: 810.00, produksi2024: 1020.41 },
+            { kecamatan: "Temanggung", produksi2023: 50.50, produksi2024: 96.55 },
+            { kecamatan: "Tlogomulyo", produksi2023: 752.28, produksi2024: 822.43 },
+            { kecamatan: "Tembarak", produksi2023: 369.83, produksi2024: 670.67 },
+            { kecamatan: "Selopampang", produksi2023: 303.36, produksi2024: 316.91 },
+            { kecamatan: "Kranggan", produksi2023: 4.70, produksi2024: 5.80 },
+            { kecamatan: "Pringsurat", produksi2023: 6.48, produksi2024: 9.00 },
+            { kecamatan: "Kaloran", produksi2023: 6.70, produksi2024: 32.16 },
+            { kecamatan: "Kandangan", produksi2023: 6.40, produksi2024: 15.81 },
+            { kecamatan: "Kedu", produksi2023: 986.60, produksi2024: 657.27 },
+            { kecamatan: "Ngadirejo", produksi2023: 1227.86, produksi2024: 922.00 },
+            { kecamatan: "Jumo", produksi2023: 786.79, produksi2024: 500.00 },
+            { kecamatan: "Gemawang", produksi2023: 3.00, produksi2024: 5.70 },
+            { kecamatan: "Candiroto", produksi2023: 585.50, produksi2024: 420.00 },
+            { kecamatan: "Bejen", produksi2023: null, produksi2024: null },
+            { kecamatan: "Tretep", produksi2023: 861.95, produksi2024: 800.65 },
+            { kecamatan: "Wonoboyo", produksi2023: 737.88, produksi2024: 629.13 }
+        ];
+
+        // Fungsi untuk memformat angka dengan pemisah ribuan
+        function formatNumber(num) {
+            if (num === null || num === undefined) return "-";
+            return num.toLocaleString('id-ID', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // Fungsi untuk menghitung perubahan persentase
+        function calculateChange(oldVal, newVal) {
+            if (oldVal === null || newVal === null || oldVal === 0) return null;
+            return ((newVal - oldVal) / oldVal) * 100;
+        }
+
+        // Fungsi untuk menampilkan data dalam tabel
+        function renderDataTable() {
+            const tableBody = document.getElementById('dataTembakau');
+            tableBody.innerHTML = '';
+            
+            dataTembakau.forEach(item => {
+                const change = calculateChange(item.produksi2023, item.produksi2024);
+                const changeClass = change > 0 ? 'increase' : (change < 0 ? 'decrease' : '');
+                const changeText = change !== null ? 
+                    `${change > 0 ? '+' : ''}${change.toFixed(1)}%` : 
+                    (item.produksi2023 === null || item.produksi2024 === null ? '-' : '0%');
+                
+                // Tentukan kategori produksi untuk warna baris
+                const avgProduction = (item.produksi2023 + item.produksi2024) / 2;
+                let rowClass = '';
+                if (avgProduction >= 800) rowClass = 'high';
+                else if (avgProduction >= 200) rowClass = 'medium';
+                else rowClass = 'low';
+                
+                const row = document.createElement('tr');
+                row.className = rowClass;
+                row.innerHTML = `
+                    <td><strong>${item.kecamatan}</strong></td>
+                    <td>${formatNumber(item.produksi2023)}</td>
+                    <td>${formatNumber(item.produksi2024)}</td>
+                    <td class="${changeClass}">${changeText}</td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Fungsi untuk flip peta
+        function flipMap() {
+            const flipper = document.getElementById('mapFlipper');
+            flipper.classList.toggle('flipped');
+            
+            // Update tombol aktif
+            const map2023Btn = document.querySelector('.map-btn:nth-child(1)');
+            const map2024Btn = document.querySelector('.map-btn:nth-child(3)');
+            
+            if (flipper.classList.contains('flipped')) {
+                // Sedang menampilkan 2024
+                map2023Btn.classList.remove('active');
+                map2024Btn.classList.add('active');
+            } else {
+                // Sedang menampilkan 2023
+                map2023Btn.classList.add('active');
+                map2024Btn.classList.remove('active');
+            }
+        }
+
+        // Fungsi untuk menampilkan peta tertentu
+        function showMap(year) {
+            const flipper = document.getElementById('mapFlipper');
+            
+            if (year === '2023') {
+                flipper.classList.remove('flipped');
+                document.querySelector('.map-btn:nth-child(1)').classList.add('active');
+                document.querySelector('.map-btn:nth-child(3)').classList.remove('active');
+            } else if (year === '2024') {
+                flipper.classList.add('flipped');
+                document.querySelector('.map-btn:nth-child(1)').classList.remove('active');
+                document.querySelector('.map-btn:nth-child(3)').classList.add('active');
+            }
+        }
+
+        // Hitung total produksi
+        function calculateTotals() {
+            let total2023 = 0;
+            let total2024 = 0;
+            let count2023 = 0;
+            let count2024 = 0;
+            
+            dataTembakau.forEach(item => {
+                if (item.produksi2023 !== null) {
+                    total2023 += item.produksi2023;
+                    count2023++;
+                }
+                if (item.produksi2024 !== null) {
+                    total2024 += item.produksi2024;
+                    count2024++;
+                }
+            });
+            
+            return {
+                total2023: total2023,
+                total2024: total2024,
+                avg2023: total2023 / count2023,
+                avg2024: total2024 / count2024,
+                change: ((total2024 - total2023) / total2023) * 100
+            };
+        }
+
+        // Update summary data
+        function updateSummary() {
+            const totals = calculateTotals();
+            
+            document.getElementById('total2023').textContent = formatNumber(totals.total2023);
+            document.getElementById('total2024').textContent = formatNumber(totals.total2024);
+            
+            const changeElement = document.getElementById('totalChange');
+            changeElement.textContent = `${totals.change > 0 ? '+' : ''}${totals.change.toFixed(1)}%`;
+            
+            if (totals.change > 0) {
+                changeElement.classList.remove('decrease');
+                changeElement.classList.add('increase');
+            } else {
+                changeElement.classList.remove('increase');
+                changeElement.classList.add('decrease');
+            }
+        }
+
+        // Fungsi untuk inisialisasi
+        function init() {
+            // Render tabel data
+            renderDataTable();
+            
+            // Update summary
+            updateSummary();
+            
+            // Animasi fade in untuk konten
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 100));
+            });
+            
+            // Tambahkan event listener untuk tombol
+            document.querySelectorAll('.map-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!this.classList.contains('flip-btn')) {
+                        document.querySelectorAll('.map-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Jalankan inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
